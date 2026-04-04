@@ -53,8 +53,21 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers("/api/auth/signup", "/api/auth/login", "/api/auth/customer-signup", "/api/auth/customer-login").permitAll()
-                .requestMatchers("/", "/index.html", "/login.html", "/signup.html", "/all_products.html", "/css/**", "/js/**", "/images/**").permitAll()
-                .requestMatchers("/error").permitAll()
+                .requestMatchers(
+                        "/",
+                        "/index.html",
+                        "/login.html",
+                        "/signup.html",
+                        "/all_products.html",
+                        "/product_management.html",
+                        "/order_management.html",
+                        "/NewWorker.html",
+                        "/favicon.ico",
+                        "/error",
+                        "/error/**"
+                ).permitAll()
+                .requestMatchers("/customer/**").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/products", "/api/products/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/products/**").hasAnyRole("ADMIN", "PM")
                 .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAnyRole("ADMIN", "PM")
@@ -63,11 +76,9 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/orders").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/orders/{id}").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/orders/**").authenticated()
-                .requestMatchers("/product_management.html").hasAnyRole("ADMIN", "PM")
                 .requestMatchers("/api/categories/**").hasAnyRole("ADMIN", "PM")
                 .requestMatchers("/api/certifications/**").hasAnyRole("ADMIN", "PM")
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                .requestMatchers("/order_management.html").hasAnyRole("ADMIN", "OM")
                 .requestMatchers("/api/orders/**").hasAnyRole("ADMIN", "OM")
                 .requestMatchers("/api/order-statuses/**").hasAnyRole("ADMIN", "OM")
                 .anyRequest().authenticated()
@@ -82,7 +93,11 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5500", "http://127.0.0.1:5500"));
+        configuration.setAllowedOrigins(Arrays.asList(
+                "http://localhost:5500",
+                "http://127.0.0.1:5500",
+                "http://localhost:8080",
+                "http://127.0.0.1:8080"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList(
             "Authorization",

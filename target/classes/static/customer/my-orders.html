@@ -139,8 +139,14 @@
             padding: 50px 0;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/rice-theme.css">
+    <script>(function(){var k='riceThemePreference';document.documentElement.setAttribute('data-theme',localStorage.getItem(k)==='light'?'light':'dark');})();</script>
 </head>
 <body>
+    <button type="button" id="rice-theme-toggle" class="rice-theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme"><span class="rice-theme-icon-sun" aria-hidden="true">&#9728;&#xfe0f;</span><span class="rice-theme-icon-moon" aria-hidden="true">&#127769;</span></button>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
@@ -254,13 +260,26 @@
         const orderDetailsContent = document.getElementById('orderDetailsContent');
         
         // Check Login Status
-        function checkLoginStatus() {
+        async function checkLoginStatus() {
             const token = localStorage.getItem('token');
-            const user = localStorage.getItem('user');
+            let user = localStorage.getItem('user');
             
-            if (!token || !user) {
+            if (!token) {
                 handleNotLoggedIn();
                 return;
+            }
+            if (!user) {
+                try {
+                    const res = await fetch(`${API_URL}/auth/user`, {
+                        headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/json' }
+                    });
+                    if (!res.ok) throw new Error('auth');
+                    localStorage.setItem('user', JSON.stringify(await res.json()));
+                    user = localStorage.getItem('user');
+                } catch (e) {
+                    handleNotLoggedIn();
+                    return;
+                }
             }
             
             try {
@@ -344,8 +363,8 @@
                 }
             } catch (error) {
                 console.error('Error loading orders:', error);
-                // If there's an error, show empty message
-                showEmptyOrdersMessage();
+                ordersListContainer.innerHTML = '<div class="alert alert-danger">Could not load orders. Try refreshing or <a href="login.html">signing in</a> again.</div>';
+                emptyOrdersMessage.style.display = 'none';
             }
         }
         
@@ -392,7 +411,7 @@
                         ${renderOrderTracking(order.statusName)}
                     </div>
                     <div class="order-footer d-flex justify-content-between align-items-center">
-                        <div>Total: <strong>$${(order.total || 0).toFixed(2)}</strong></div>
+                        <div>Total: <strong>$${Number(order.total != null ? order.total : 0).toFixed(2)}</strong></div>
                         <button class="btn btn-outline-primary btn-sm" onclick="viewOrderDetails(${order.id})">
                             View Details
                         </button>
@@ -563,15 +582,15 @@
                                 ${renderOrderItemsTable(order.orderItems)}
                                 <tr>
                                     <td colspan="3" class="text-end">Subtotal</td>
-                                    <td class="text-end">$${order.subtotal.toFixed(2)}</td>
+                                    <td class="text-end">$${Number(order.subtotal != null ? order.subtotal : 0).toFixed(2)}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" class="text-end">Shipping</td>
-                                    <td class="text-end">$${order.shipping.toFixed(2)}</td>
+                                    <td class="text-end">$${Number(order.shipping != null ? order.shipping : 0).toFixed(2)}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" class="text-end"><strong>Total</strong></td>
-                                    <td class="text-end"><strong>$${order.total.toFixed(2)}</strong></td>
+                                    <td class="text-end"><strong>$${Number(order.total != null ? order.total : 0).toFixed(2)}</strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -640,7 +659,7 @@
         
         // Event Listeners
         window.addEventListener('DOMContentLoaded', () => {
-            checkLoginStatus();
+            checkLoginStatus().catch(() => handleNotLoggedIn());
             loadCart();
         });
         
@@ -751,5 +770,6 @@
             });
         }
     </script>
+    <script src="../js/rice-theme-toggle.js"></script>
 </body>
 </html> 

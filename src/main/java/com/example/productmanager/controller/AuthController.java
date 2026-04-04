@@ -295,8 +295,16 @@ public class AuthController {
         }
         User user = userRepository.findByUsername(authentication.getName())
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        
-        return ResponseEntity.ok(new JwtResponse(null, null, user.getUsername(), user.getEmail()));
+
+        Map<String, Object> body = new HashMap<>();
+        body.put("id", user.getId());
+        body.put("username", user.getUsername());
+        body.put("email", user.getEmail());
+        body.put("firstName", user.getFirstName());
+        body.put("lastName", user.getLastName());
+        body.put("phone", user.getPhone());
+        body.put("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
+        return ResponseEntity.ok(body);
     }
 
     /**

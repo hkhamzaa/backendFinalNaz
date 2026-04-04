@@ -21,7 +21,7 @@ public class JwtTokenProvider {
     private String jwtSecret;
 
     @Value("${app.jwt.expiration}")
-    private int jwtExpirationInMs;
+    private long jwtExpirationInMs;
 
     private Key getSigningKey() {
         byte[] keyBytes = jwtSecret.getBytes();

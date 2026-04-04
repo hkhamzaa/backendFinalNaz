@@ -124,8 +124,15 @@
             z-index: 1050;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/rice-theme.css">
+    <script>(function(){var k='riceThemePreference';document.documentElement.setAttribute('data-theme',localStorage.getItem(k)==='light'?'light':'dark');})();</script>
 </head>
 <body>
+    <script src="../js/customer-staff-guard.js"></script>
+    <button type="button" id="rice-theme-toggle" class="rice-theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme"><span class="rice-theme-icon-sun" aria-hidden="true">&#9728;&#xfe0f;</span><span class="rice-theme-icon-moon" aria-hidden="true">&#127769;</span></button>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
@@ -163,7 +170,7 @@
             <h1 class="text-center mb-4">Our Products</h1>
             
             <!-- Filter Section -->
-            <div class="filter-section mb-4">
+            <div class="filter-section rice-filter-bar mb-4">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="category-filter">
@@ -363,14 +370,32 @@
                             weightOptionsHtml = `
                                 <div class="mt-3">
                                     <label class="form-label">Package Size:</label>
-                                    <div class="weight-options" data-product-id="${product.id}">
-                                        ${weightOptions.map((option, index) => 
-                                            `<div class="weight-option ${index === 0 ? 'selected' : ''}" 
-                                                 data-weight="${option.weight}" 
+                                    <div class="weight-options">
+                                        ${weightOptions.map((option, index) => {
+                                            const grams = option.weightValue != null ? option.weightValue : option.weight;
+                                            return `<div class="weight-option ${index === 0 ? 'selected' : ''}" 
+                                                 data-weight="${grams}" 
                                                  data-price="${option.price}">
-                                                ${option.weight}g - $${option.price}
-                                             </div>`
-                                        ).join('')}
+                                                ${grams}g - $${option.price}
+                                             </div>`;
+                                        }).join('')}
+                                    </div>
+                                </div>
+                            `;
+                        } else {
+                            const perKg = Number(product.pricePerKg);
+                            const effPerKg = product.hasDiscount
+                                ? perKg * (100 - Number(product.discountPercentage || 0)) / 100
+                                : perKg;
+                            const linePrice = effPerKg.toFixed(2);
+                            weightOptionsHtml = `
+                                <div class="mt-3">
+                                    <label class="form-label">Unit (no packages configured)</label>
+                                    <p class="small text-muted mb-2">Sold per kg — each quantity = <strong>1 kg</strong> at $${linePrice}/kg.</p>
+                                    <div class="weight-options">
+                                        <div class="weight-option selected" data-weight="1000" data-price="${linePrice}">
+                                            1 kg — $${linePrice}
+                                        </div>
                                     </div>
                                 </div>
                             `;
@@ -482,7 +507,11 @@
         // Add to cart
         function addToCart(productId, productName, basePrice, imageUrl) {
             // Get selected weight option
-            const productContainer = document.querySelector(`.col-md-6[data-product-id="${productId}"]`);
+            const productContainer = document.querySelector(`[data-product-id="${productId}"]`);
+            if (!productContainer) {
+                alert('Could not find this product on the page.');
+                return;
+            }
             const selectedWeight = productContainer.querySelector('.weight-option.selected');
             const quantity = parseInt(productContainer.querySelector('.product-quantity').value);
             
@@ -595,5 +624,6 @@
             checkLoginStatus();
         });
     </script>
+    <script src="../js/rice-theme-toggle.js"></script>
 </body>
 </html>

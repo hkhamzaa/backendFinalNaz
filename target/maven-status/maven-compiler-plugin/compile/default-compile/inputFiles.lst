@@ -1,66 +1,67 @@
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\service\CategoryService.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\OrderStatusDTO.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\ProductDTO.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\SignupRequest.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\CreateOrderDTO.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\config\SecurityConfig.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\CategoryRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\controller\CategoryController.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\JwtResponse.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\CustomerSignupRequest.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\RoleRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\entity\OrderItem.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\controller\CustomerAddressController.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\entity\OrderStatus.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\controller\ProductController.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\UserRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\OrderDTO.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\LoginRequest.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\entity\User.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\model\ProductNutritionalInfo.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\entity\Role.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\controller\CertificationController.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\OrderItemRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\service\CustomerAddressService.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\OrderItemDTO.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\security\JwtTokenProvider.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\ProductSpecificationRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\security\JwtAuthenticationFilter.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\entity\Worker.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\model\Product.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\ProductRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\model\ProductFeature.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\controller\AdminController.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\service\CustomUserDetailsService.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\config\JacksonConfig.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\NutritionalInfoDTO.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\controller\OrderController.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\entity\Order.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\controller\OrderStatusController.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\CertificationRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\CustomerAddressRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\OrderRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\service\OrderStatusService.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\model\ProductSpecification.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\ProductFeatureRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\service\ProductService.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\WorkerRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\controller\UserController.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\ProductWeightOptionRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\WorkerCreateRequest.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\CustomerAddressDTO.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\ProductNutritionalInfoRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\util\PasswordGenerator.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\service\UserService.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\ProductManagerApplication.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\controller\AuthController.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\WeightOptionDTO.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\SpecificationDTO.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\model\Category.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\model\Certification.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\dto\CustomerLoginRequest.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\repository\OrderStatusRepository.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\service\OrderService.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\entity\CustomerAddress.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\service\CertificationService.java
-C:\Users\hamza\project2\backendnaz\src\main\java\com\example\productmanager\model\ProductWeightOption.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\entity\OrderItem.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\CertificationRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\SignupRequest.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\ProductManagerApplication.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\service\OrderService.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\CustomerAddressRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\CustomerSignupRequest.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\entity\Order.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\service\ProductService.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\entity\User.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\model\ProductNutritionalInfo.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\LoginRequest.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\CustomerAddressDTO.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\model\Certification.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\UserRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\controller\OrderController.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\controller\OrderStatusController.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\model\ProductSpecification.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\security\JwtAuthenticationFilter.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\controller\UserController.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\SpecificationDTO.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\config\RoleDataInitializer.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\service\CustomUserDetailsService.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\OrderDTO.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\ProductNutritionalInfoRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\entity\OrderStatus.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\config\JacksonConfig.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\controller\AuthController.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\ProductRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\service\CategoryService.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\JwtResponse.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\CreateOrderDTO.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\OrderStatusDTO.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\OrderStatusRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\service\UserService.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\ProductDTO.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\model\ProductWeightOption.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\ProductWeightOptionRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\controller\ProductController.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\entity\CustomerAddress.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\CustomerLoginRequest.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\controller\AdminController.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\model\Category.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\WorkerRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\entity\Role.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\WeightOptionDTO.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\model\Product.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\entity\Worker.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\model\ProductFeature.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\controller\CustomerAddressController.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\RoleRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\OrderItemDTO.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\OrderRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\config\SecurityConfig.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\controller\CategoryController.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\util\PasswordGenerator.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\ProductSpecificationRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\service\CertificationService.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\service\CustomerAddressService.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\controller\CertificationController.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\ProductFeatureRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\service\OrderStatusService.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\CategoryRepository.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\NutritionalInfoDTO.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\dto\WorkerCreateRequest.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\security\JwtTokenProvider.java
+C:\Users\hamza\Downloads\nazrice backend\backendFinalNaz\src\main\java\com\example\productmanager\repository\OrderItemRepository.java

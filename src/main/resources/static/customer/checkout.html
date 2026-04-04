@@ -70,8 +70,15 @@
             margin-bottom: 20px;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/rice-theme.css">
+    <script>(function(){var k='riceThemePreference';document.documentElement.setAttribute('data-theme',localStorage.getItem(k)==='light'?'light':'dark');})();</script>
 </head>
 <body>
+    <script src="../js/customer-staff-guard.js"></script>
+    <button type="button" id="rice-theme-toggle" class="rice-theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme"><span class="rice-theme-icon-sun" aria-hidden="true">&#9728;&#xfe0f;</span><span class="rice-theme-icon-moon" aria-hidden="true">&#127769;</span></button>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
@@ -85,7 +92,7 @@
                         <a class="nav-link" href="products.html">All Products</a>
                     </li>
                     <li class="nav-item" id="loginLink">
-                        <a class="nav-link" href="../login.html">Login</a>
+                        <a class="nav-link" href="login.html">Customer login</a>
                     </li>
                     <li class="nav-item" id="logoutLink" style="display:none;">
                         <a class="nav-link" href="#" onclick="logout()">Logout</a>
@@ -104,6 +111,14 @@
     <div class="content-section">
         <div class="container mt-5">
             <h1 class="mb-4">Checkout</h1>
+
+            <nav class="rice-checkout-progress" aria-label="Checkout progress">
+                <ol class="rice-checkout-steps">
+                    <li class="rice-step-active"><span class="rice-step-num" aria-hidden="true">1</span> Shipping &amp; payment</li>
+                    <li><span class="rice-step-num" aria-hidden="true">2</span> Review order</li>
+                    <li><span class="rice-step-num" aria-hidden="true">3</span> Confirmation</li>
+                </ol>
+            </nav>
             
             <!-- User Status -->
             <div id="userStatus" class="alert alert-info mb-4">
@@ -115,7 +130,7 @@
                 <i class="bi bi-cart-x"></i>
                 <h3>Your cart is empty</h3>
                 <p class="mb-4">Add some products to continue shopping</p>
-                <a href="../all_products.html" class="btn btn-primary">Browse Products</a>
+                <a href="products.html" class="btn btn-primary">Browse products</a>
             </div>
 
             <div id="checkoutContainer" class="row">
@@ -240,6 +255,10 @@
                         <button id="placeOrderBtn" class="btn btn-primary w-100 mt-4">
                             Place Order
                         </button>
+                        <div class="checkout-trust-row" aria-label="Trust signals">
+                            <span><i class="bi bi-shield-lock" aria-hidden="true"></i> Secure checkout</span>
+                            <span><i class="bi bi-truck" aria-hidden="true"></i> Delivery updates</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -319,41 +338,60 @@
         const guestSignupCardElement = document.getElementById('guestSignupCard');
         const signupLinkElement = document.getElementById('signupLink');
         
-        // Check Login Status
-        function checkLoginStatus() {
+        // Check Login Status (token + stored profile, or fetch profile for staff-login / legacy sessions)
+        async function checkLoginStatus() {
             userStatusElement.textContent = 'Checking login status...';
             
             const token = localStorage.getItem('token');
-            const user = localStorage.getItem('user');
-            
-            if (!token || !user) {
+            if (!token) {
                 handleNotLoggedIn();
                 return;
             }
             
+            let userJson = localStorage.getItem('user');
+            if (!userJson) {
+                try {
+                    const res = await fetch(`${API_URL}/auth/user`, {
+                        headers: {
+                            'Authorization': 'Bearer ' + token,
+                            'Accept': 'application/json'
+                        }
+                    });
+                    if (!res.ok) {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        handleNotLoggedIn();
+                        return;
+                    }
+                    const profile = await res.json();
+                    localStorage.setItem('user', JSON.stringify(profile));
+                    userJson = localStorage.getItem('user');
+                } catch (e) {
+                    console.error(e);
+                    handleNotLoggedIn();
+                    return;
+                }
+            }
+            
             try {
-                // Use the stored user data instead of making an API call
-                const userData = JSON.parse(user);
+                const userData = JSON.parse(userJson);
                 isLoggedIn = true;
                 userStatusElement.classList.remove('alert-info', 'alert-danger');
                 userStatusElement.classList.add('alert-success');
-                userStatusElement.textContent = `Welcome back, ${userData.username || 'Customer'}!`;
+                userStatusElement.textContent = `Welcome back, ${userData.username || userData.email || 'Customer'}!`;
                 
                 loginLinkElement.style.display = 'none';
                 logoutLinkElement.style.display = 'block';
                 saveAddressCheckboxElement.style.display = 'block';
                 setDefaultAddressCheckboxElement.style.display = 'block';
                 
-                // Set userId if available
                 userId = userData.id;
                 
-                // Pre-fill the form with user data if available
                 if (userData.email) document.getElementById('email').value = userData.email;
                 if (userData.firstName) document.getElementById('firstName').value = userData.firstName;
                 if (userData.lastName) document.getElementById('lastName').value = userData.lastName;
                 if (userData.phone) document.getElementById('phone').value = userData.phone;
                 
-                // Try to load saved addresses if userId is available
                 if (userId) {
                     loadSavedAddresses();
                 }
@@ -592,7 +630,7 @@
             // Create the order items
             const orderItems = cart.map(item => {
                 return {
-                    productId: item.productId,
+                    productId: item.productId != null ? item.productId : item.id,
                     productName: item.name,
                     productImage: item.image,
                     packagingPhoto: item.packagingPhoto,
@@ -683,7 +721,7 @@
                 // Set up the view order details button
                 document.getElementById('viewOrderDetailsBtn').onclick = function() {
                     if (isLoggedIn) {
-                        window.location.href = `my-orders.html?order=${createdOrder.id}`;
+                        window.location.href = `my-account.html?order=${createdOrder.id}`;
                     } else {
                         window.location.href = `order-details.html?order=${createdOrder.id}&email=${encodeURIComponent(createdOrder.email)}`;
                     }
@@ -755,17 +793,19 @@
         // Logout function
         function logout() {
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             window.location.href = '../index.html';
         }
         
         // Event Listeners
         window.addEventListener('DOMContentLoaded', () => {
-            checkLoginStatus();
+            checkLoginStatus().catch(function () { handleNotLoggedIn(); });
             loadCart();
             
             useNewAddressBtnElement.addEventListener('click', handleUseNewAddress);
             placeOrderBtnElement.addEventListener('click', placeOrder);
         });
     </script>
+    <script src="../js/rice-theme-toggle.js"></script>
 </body>
 </html> 

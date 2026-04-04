@@ -38,8 +38,14 @@
             margin-top: 20px;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/rice-theme.css">
+    <script>(function(){var k='riceThemePreference';document.documentElement.setAttribute('data-theme',localStorage.getItem(k)==='light'?'light':'dark');})();</script>
 </head>
 <body>
+    <button type="button" id="rice-theme-toggle" class="rice-theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme"><span class="rice-theme-icon-sun" aria-hidden="true">&#9728;&#xfe0f;</span><span class="rice-theme-icon-moon" aria-hidden="true">&#127769;</span></button>
     <div class="container">
         <div class="signup-container">
             <div class="card">
@@ -145,5 +151,6 @@
             alert.style.display = 'block';
         }
     </script>
+    <script src="js/rice-theme-toggle.js"></script>
 </body>
 </html> 
