@@ -2,6 +2,7 @@
 
 A full-stack **rice e-commerce** system: customers browse, cart, and checkout; staff manage **products**, **orders**, and **users** through a secure **admin-style panel**.  
 Built as our **2nd semester Database + OOP** coursework—and delivered as a **real commercial project** for a client who needed a practical storefront and back-office tools.
+https://youtu.be/yY9FHekjaSs demo video
 
 ---
 
