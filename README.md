@@ -1,4 +1,4 @@
-# 🌾 Naz Rice — Premium Rice E‑Commerce Platform
+# 🌾 Naz Rice : Premium Rice E‑Commerce Platform
 
 demo video: https://youtu.be/yY9FHekjaSs 
 
